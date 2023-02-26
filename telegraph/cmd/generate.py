@@ -20,7 +20,7 @@ import click
 @click.option(
     '--template_id',
     type=int,
-    default="",
+    default=0,
     multiple=False,
     help='git template code'
 )
