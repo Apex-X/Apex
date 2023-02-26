@@ -33,14 +33,13 @@ import click
 )
 def generate(git_token: str, vcs_type: str, template_id: int, local_path_template: str):
     """
-    Run all tests or selected tests. For run a single test or selected tests you can use --test_name flag.\n
+    Generate project from template in VCS or local path template\n
 
-    For running all tests:\n
-    e.g: run-test \n
+    [For generating project from VCS]:\n
+    $ telegraph generate --git_token "YOUR-TOKEN" --vcs_type "github" --template_id 12456 \n
 
-    For running a single test or selected tests (In this situation, app runs your test names):\n
-    e.g: run-test --test_name=SoftAcceptedCarIssue --test_name=HardArrived ...\n
-
+    [For generating project from local path template]:\n
+    $ telegraph generate --local_path_template "YOUR-TEMPLATE-PATH" \n
     """
 
     if local_path_template:
