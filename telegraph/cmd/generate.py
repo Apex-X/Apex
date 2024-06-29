@@ -25,13 +25,13 @@ import click
     help='git template code'
 )
 @click.option(
-    '--local_path_template',
+    '--local_template_path',
     type=str,
     default="",
     multiple=False,
     help='path of local template'
 )
-def generate(git_token: str, vcs_type: str, template_id: int, local_path_template: str):
+def generate(git_token: str, vcs_type: str, template_id: int, local_template_path: str):
     """
     Generate project from template in VCS or local path template\n
 
@@ -39,16 +39,14 @@ def generate(git_token: str, vcs_type: str, template_id: int, local_path_templat
     $ telegraph generate --git_token "YOUR-TOKEN" --vcs_type "github" --template_id 12456 \n
 
     [For generating project from local path template]:\n
-    $ telegraph generate --local_path_template "YOUR-TEMPLATE-PATH" \n
+    $ telegraph generate --local_template_path "YOUR-TEMPLATE-PATH" \n
     """
 
-    if local_path_template:
-        selected_tags, selected_vars, destination_path, project_name = ask(local_path_template)
-        generate_project(local_path_template, destination_path, project_name, selected_tags, selected_vars)
+    if local_template_path:
+        selected_tags, selected_vars, destination_path, project_name = ask(local_template_path, True, True)
+        generate_project(local_template_path, destination_path, project_name, selected_tags, selected_vars)
     else:
         tmp = get_template(git_token, vcs_type, template_id)
         selected_tags, selected_vars, destination_path, project_name = ask(tmp.name)
         generate_project(tmp.name, destination_path, project_name, selected_tags, selected_vars)
         tmp.cleanup()
-
-
