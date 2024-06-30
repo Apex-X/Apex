@@ -1,5 +1,5 @@
 import click
-from telegraph.cmd import generate, header
+from apex.cmd import generate, header
 
 
 # main command group

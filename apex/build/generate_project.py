@@ -1,5 +1,5 @@
 from typing import List, AnyStr
-from .telegraph_lang import get_vars, get_tag
+from .apex_syntax import get_vars, get_tag
 import os
 
 
@@ -35,7 +35,7 @@ def __generate_files(tmp_dir: str, dst_dir: str, selected_tags: set, selected_va
             with open(filename.path, "r") as f:
                 ignore_flag = False
                 for line in f.readlines():
-                    if "@telegraph:end" in line:
+                    if "@apex:end" in line:
                         ignore_flag = False
                         continue
                     if ignore_flag:
@@ -51,7 +51,7 @@ def __generate_files(tmp_dir: str, dst_dir: str, selected_tags: set, selected_va
                     if len(var_list):
                         for var_key in var_list:
                             if var_key in selected_vars:
-                                line = line.replace(f"@telegraph:{var_key}:var", selected_vars[var_key])
+                                line = line.replace(f"@apex:{var_key}:var", selected_vars[var_key])
                             else:
                                 raise ValueError(f"Variable {var_key} not found in selected variables")
 
@@ -65,13 +65,13 @@ def __generate_files(tmp_dir: str, dst_dir: str, selected_tags: set, selected_va
             if tag != "":
                 if tag not in selected_tags:
                     continue
-                dir_name = dir_name.replace(f"@telegraph:{tag}:tag", "")
+                dir_name = dir_name.replace(f"@apex:{tag}:tag", "")
 
             var_list = get_vars(dir_name, "")
             if len(var_list):
                 for var_key in var_list:
                     if var_key in selected_vars:
-                        dir_name = dir_name.replace(f"@telegraph:{var_key}:var", selected_vars[var_key])
+                        dir_name = dir_name.replace(f"@apex:{var_key}:var", selected_vars[var_key])
                     else:
                         raise ValueError(f"Variable {var_key} not found in selected variables")
 
