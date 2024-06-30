@@ -1,4 +1,4 @@
-from apex.build import get_blueprint, ask, generate_project
+from apex.build import get_blueprint, ask_questions, Apex
 import click
 
 
@@ -42,12 +42,14 @@ def generate(git_token: str, vcs_type: str, template_id: int, local_template_pat
     $ apex generate --local_template_path "YOUR-TEMPLATE-PATH" \n
     """
 
+    apex = Apex()
     if local_template_path:
-        selected_tags, selected_vars, destination_path, project_name = ask(local_template_path, True, True)
-        generate_project(local_template_path, destination_path, project_name, selected_tags, selected_vars)
+        tags, vars_to_tag = apex.parse_syntax(local_template_path)
+        selected_tags, selected_vars, destination_path, project_name = ask_questions(tags, vars_to_tag)
+        apex.generate_project(local_template_path, destination_path, project_name, selected_tags, selected_vars)
     else:
         tmp = get_blueprint(git_token, vcs_type, template_id)
-        # TODO: fix the issue of ask
-        selected_tags, selected_vars, destination_path, project_name = ask(tmp.name)
-        generate_project(tmp.name, destination_path, project_name, selected_tags, selected_vars)
+        tags, vars_to_tag = apex.parse_syntax(tmp.name)
+        selected_tags, selected_vars, destination_path, project_name = ask_questions(tags, vars_to_tag)
+        apex.generate_project(tmp.name, destination_path, project_name, selected_tags, selected_vars)
         tmp.cleanup()
