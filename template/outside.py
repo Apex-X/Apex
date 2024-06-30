@@ -2,10 +2,10 @@ def html(request):
     return render(request, 'test.html')
 
 def header(request):
-    pp_project_name = "@telegraph:project_name:var"
-    print("@telegraph:question:var", "@telegraph:project_name:var")
+    pp_project_name = "@apex:project_name:var"
+    print("@apex:question:var", "@apex:project_name:var")
 
 
-# @telegraph:header:tag
+# @apex:header:tag
 h = "be himalia khosh omadi"
-# @telegraph:end
+# @apex:end
