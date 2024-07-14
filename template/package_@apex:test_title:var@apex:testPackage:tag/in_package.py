@@ -9,7 +9,7 @@ def func():
 # if you see this comment, please delete it.
 # it is just for test the BERT algorithm
 def func2():
-    print("chos2")
+    print("func2")
 
 # @apex:feature:tag
 def main(key):
