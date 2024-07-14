@@ -13,9 +13,9 @@ def ask_questions(
     :param vars_to_tag: map of variables to tag
     :return: selected_tags, selected_variables_with_value, project_path, project_name
     """
-    project_name = typer.prompt(f"🎯 Enter the project name:", default="")
+    project_name = typer.prompt("🎯 Enter the project name")
 
-    path = typer.prompt(f"🕹️ Enter the project path:", default="")
+    path = typer.prompt("🕹️  Enter the project path")
 
     selected_tags = set({})
     for tag in tags:
@@ -27,7 +27,7 @@ def ask_questions(
     for var, tag in vars_to_tag.items():
         if tag != "" and tag not in selected_tags:
             continue
-        value = typer.prompt(f"🛎️ Enter the value of \"{var}\" variable:", default="")
+        value = typer.prompt(f"🛎️  Enter the value of \"{var}\" variable")
         if value:
             selected_variables_with_value[var] = value
 
