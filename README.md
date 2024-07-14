@@ -51,7 +51,7 @@ If you want to use tag for just file or folder, you can use the tag syntax in th
     |--- file_name
 ```
 
-### tags in blueprint
+### variables in blueprint
 To use variables in the blueprint, you can use the syntax below:
 
 ```python
