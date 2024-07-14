@@ -1,25 +1,25 @@
-from apex.build import get_blueprint, ask_questions, Apex
-import click
+from apex.build import ask_questions, Apex
+from typing_extensions import Annotated
+import typer
+
+app = typer.Typer()
 
 
-@click.command("generate")
-@click.option(
-    '--blueprint_path',
-    type=str,
-    default="",
-    multiple=False,
-    help='path of local project template'
-)
-def generate(blueprint_path: str):
+@app.command()
+def generate(
+    blueprint_path: Annotated[str, typer.Argument(help="🪙 path of local project template")]
+):
     """
-    Generate project from template in VCS or local path template\n
+    Generate project from template in local path template\n
 
-    [For generating project from local path template]:\n
-    $ apex generate --blueprint_path "YOUR-TEMPLATE-PATH" \n
+    $ apex "YOUR-BLUEPRINT-PATH" \n
     """
 
     apex = Apex()
-    if blueprint_path:
+    if blueprint_path != "":
         tags, vars_to_tag = apex.parse_syntax(blueprint_path)
         selected_tags, selected_vars, destination_path, project_name = ask_questions(tags, vars_to_tag)
         apex.generate_project(blueprint_path, destination_path, project_name, selected_tags, selected_vars)
+    else:
+        typer.echo("Please provide blueprint path")
+        raise typer.Exit(code=1)
