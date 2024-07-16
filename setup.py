@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="apexx",
-    version="0.0.1",
+    version="0.0.2",
     author="Nima Mashhadi M. Reza",
     author_email="n.twenty.five.a@gmail.com",
     description="Apex-x is a project to create a new project by using a blueprint for ANY LANGUAGE!",
@@ -40,4 +40,8 @@ setuptools.setup(
         "urllib3==2.2.2",
     ],
     python_requires='>=3.7',
+    entry_points='''
+        [console_scripts]
+        apexx=apexx.cmd:app
+    ''',
 )
