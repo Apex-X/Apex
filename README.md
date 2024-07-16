@@ -1,28 +1,28 @@
-# Apex
+# Apex-X
 
 <div align="center">
   <img src=".github/assets/logo.jpg" width="500" height="500" align="center">
 </div>
 
-## What is Apex?
+## What is Apex-X?
 Apex is a simple and lightweight project to create a new project by using a blueprint for ANY LANGUAGE! 
 Apex find all tags and variables in the blueprint and replace them with the values that you provide.  
 You need know the syntax of the tags and variables to use Apex correctly in your blueprint.
 
-## How to use Apex?
+## How to use Apex-X?
 You can install it with pip:
 ```bash
-pip install apex
+pip install apexx
 ```
 
-After install the Apex, you can use it in your terminal:
+After install the Apex-X, you can use it in your terminal:
 ```bash
-apex path/to/blueprint
+apexx path/to/blueprint
 ```
 
 After that, Apex will ask you for selecting the tags and the values of variables in the blueprint.
 
-## Apex Syntax
+## Apex-X Syntax
 
 ### tags in blueprint
 Tag is a section of code that labeled with a name. You can use tags in your blueprint to customize the blueprint for your project.  

@@ -1,4 +1,4 @@
-from apex.build import ask_questions, Apex
+from apexx.build import ask_questions, Apex
 from typing_extensions import Annotated
 import typer
 
@@ -12,7 +12,7 @@ def generate(
     """
     Generate project from template in local path template\n
 
-    $ apex "YOUR-BLUEPRINT-PATH" \n
+    $ apexx "YOUR-BLUEPRINT-PATH" \n
     """
 
     apex = Apex()

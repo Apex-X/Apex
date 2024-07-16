@@ -4,11 +4,11 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="apex",
+    name="apexx",
     version="0.0.1",
     author="Nima Mashhadi M. Reza",
     author_email="n.twenty.five.a@gmail.com",
-    description="Apex is a project to create a new project by using a blueprint for ANY LANGUAGE!",
+    description="Apex-x is a project to create a new project by using a blueprint for ANY LANGUAGE!",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/n25a/Apex",
